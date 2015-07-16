@@ -1,0 +1,98 @@
+﻿@using MVCInstagramFatih.Entity
+
+@{
+    User u = Session["Kullanici"] as User;
+}
+<header class="navbar navbar-default hidden-menu hidden-menu-up">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header col-sm-3">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="menu-title">Menü</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+               
+            </div>
+            <div class="col-sm-9">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-user"> </i>
+                                @u.FirstName
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Home/Index">Anasayfa</a>
+                        </li>
+                        <li>                            
+                            @Html.ActionLink("Profil", "Index", "Profil")
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Create", "Profil")">
+                                <i class="glyphicon glyphicon-share"> </i>
+                                Paylaş
+                            </a>
+                            
+                        </li>
+                        <li>
+                            <a href="~/Home/">Çıkış</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="main-header hidden-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <figure>
+                        <a href="@Url.Action("Index","Home")"><img src="~/img/logo.png" alt="Logo" height="80" /></a>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-sm-8 text-right">
+                <div class="search-wrap active">
+                    <div class="search-input">
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="Hastag" placeholder="#hastag ara" value="@Request["Hastag"]">
+                                <span class="input-group-addon">
+                                    <button type="submit">
+                                        <i class="fa fa-search"> </i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="#" class="menu-button">Menü <i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+<header class="mobile-logo visible-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="logo">
+                    <figure>
+                        <a href="index.html"><img src="~/img/logo.png" alt="Logo" height="80" /></a>
+                    </figure>
+                </div>
+                <div class="mobile-search">
+                    <form action="#">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="s" placeholder="Search something interesting">
+                            <span class="input-group-addon"><button type="submit"><i class="fa fa-search"></i></button></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

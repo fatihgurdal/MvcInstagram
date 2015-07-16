@@ -1,0 +1,35 @@
+﻿@using MVCInstagramFatih.Entity
+
+@model User
+
+@{
+    ViewBag.Title = "Profil";
+
+    }
+@section RS_Menu{
+    @Html.Partial("_Menu")
+}
+@section RS_ProfilBar{
+    @Html.Partial("_ProfilBarUser", Model)
+}
+<section class="portfolio-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="hp-portfolio-three col1">
+                <div class="row">
+                    @foreach (PhotoPost item in Model.photoposts)
+                    {
+                        @Html.Partial("_PostItems", item)
+                    }
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <a href="#" class="load-more">Daha fazla yükle</a>
+            </div>
+        </div>
+    </div>
+</section>
+@section RS_Footer{
+    @Html.Partial("_footer")
+}
+

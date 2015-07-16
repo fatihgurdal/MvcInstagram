@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCInstagramFatih", "MVCInstagramFatih\MVCInstagramFatih.csproj", "{55720BBE-2F84-4565-AE58-39C4E1DD7EAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCInstagramFatih.Entity", "MVCInstagramFatih.Entity\MVCInstagramFatih.Entity.csproj", "{A6649499-6684-433E-8710-5D3155480723}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DAL\DataAccessLayer.csproj", "{7D91E915-3372-4062-A44E-E08253A3FD7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{CBB0FCE3-AE9B-4423-B51A-10B80EC37864}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55720BBE-2F84-4565-AE58-39C4E1DD7EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55720BBE-2F84-4565-AE58-39C4E1DD7EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55720BBE-2F84-4565-AE58-39C4E1DD7EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55720BBE-2F84-4565-AE58-39C4E1DD7EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6649499-6684-433E-8710-5D3155480723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6649499-6684-433E-8710-5D3155480723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6649499-6684-433E-8710-5D3155480723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6649499-6684-433E-8710-5D3155480723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D91E915-3372-4062-A44E-E08253A3FD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D91E915-3372-4062-A44E-E08253A3FD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D91E915-3372-4062-A44E-E08253A3FD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D91E915-3372-4062-A44E-E08253A3FD7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB0FCE3-AE9B-4423-B51A-10B80EC37864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB0FCE3-AE9B-4423-B51A-10B80EC37864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB0FCE3-AE9B-4423-B51A-10B80EC37864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB0FCE3-AE9B-4423-B51A-10B80EC37864}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

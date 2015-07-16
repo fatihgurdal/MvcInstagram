@@ -1,0 +1,31 @@
+﻿@using MVCInstagramFatih.Entity
+@model MVCInstagramFatih.Entity.PhotoComment
+@{
+    User u = Session["Kullanici"] as User;
+
+    string CommentModalId = "CommentModal" + Model.PhotoCommentId;
+}
+<div class="row" id="@CommentModalId">
+    <div class="col-md-2">
+        <img src="@Url.Content(Model.user.ProfilImagePath)" alt="" class="img-thumbnail img-circle img-responsive" />
+    </div>
+    <div class="col-md-10">
+        <p>
+            @Model.CommentStr
+        </p>
+
+        @if ((Model.UserId == u.UserId) || (u.UserId == Model.photopost.UserId))
+        {
+            <a class="btn btn-danger" onclick="DeleteComment(@Model.PhotoCommentId)">
+                <i class="glyphicon glyphicon-remove"> </i>
+                SİL
+            </a>
+        }
+
+
+    </div>
+    <div class="col-md-12">
+        <hr />
+    </div>
+
+</div>

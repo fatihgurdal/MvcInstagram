@@ -1,0 +1,62 @@
+﻿@using MVCInstagramFatih.Entity
+@using BusinessLayer
+@model User
+@{
+    UserManagement UM = new UserManagement();
+}
+<div class="footer-newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 left">
+
+                <img src="@Url.Content(Model.ProfilImagePath)" alt="" class="img-thumbnail img-circle img-responsive" />
+            </div>
+            <div class="col-sm-6 left">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>
+                            <strong>@Model.FirstName</strong>
+                        </h2>
+                    </div>                   
+                </div>
+                <p>
+                    <i class="glyphicon glyphicon-user text-info"> </i>
+                    @string.Format("@{0}", Model.UserName)
+                </p>
+                <br />
+
+                <p class="text text-widget">
+                    <i class="glyphicon glyphicon-text-size text-info"> </i>
+                    @Model.Description
+                </p>
+
+            </div>
+            <div class="col-sm-4 left">
+                <span class="btn btn-primary">
+                    <i class="glyphicon glyphicon-picture"> </i>
+                    Fotoğraf <span class="badge">@Model.photoposts.Where(x => x.IsPhoto == true).Count()</span>
+                </span>
+
+                <span class="btn btn-primary">
+                    <i class="glyphicon glyphicon-facetime-video"> </i>
+                    Video <span class="badge">@Model.photoposts.Where(x => x.IsPhoto == false).Count()</span>
+                </span>
+                <br /><br />
+                <span class="btn btn-primary">
+                    <i class="glyphicon glyphicon-tags"> </i>
+                    Hastag <span class="badge">@UM.GetHastagCount(Model.UserId)</span>
+                </span>
+
+                <span class="btn btn-primary">
+                    <i class="glyphicon glyphicon-heart"> </i>
+                    Beğeni <span class="badge">@Model.likes.Count()</span>
+                </span>
+                <br /><br />
+                <span class="btn btn-primary">
+                    <i class="glyphicon glyphicon-comment"> </i>
+                    Yorum <span class="badge">@Model.photocomments.Count()</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

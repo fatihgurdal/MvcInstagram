@@ -1,0 +1,42 @@
+﻿@using System.Web.Optimization
+<footer class="main-footer">
+    <div class="footer-widgets">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <a href="#" class="footer-logo"><img src="~/img/logo.png" alt="Logo" /></a>
+                        <div class="copyright">© @DateTime.Now.Year Tüm haklara saklıdır. <br /> Developed by <a title="Bilge Adam Fotoğraf Sosyal Medyası" href="#">BilgeGram</a></div>
+                        <div class="motto">İhtiyacınız olan tek şey <strong>çalışmak!</strong></div>
+                        <address>
+                            GSM: (0123)456-7890 <br />
+                            Bilge Adam <br />
+                            Kadıköy / İstanbul
+                        </address>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                   @Html.Partial("_PopulerPost")
+                </div>
+                <div class="col-sm-3">
+                   @Html.Partial("_PopulerHastag")
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h2>Hakkımda</h2>
+                        <div class="text-widget">
+                            <p>
+                                Bu çalışmada sizden ASP.Net MVC Framework’ünü kullanarak bir Fotoğraf Kısa videoların* paylaşılacağı ve diğer paylaşılanlara yorum yapılacağı bir sosyalmedya uygulaması hazırlamanız.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="go-top">
+    <i class="fa fa-angle-up"></i>
+</div>
+@Scripts.Render("~/js/PageEnd")

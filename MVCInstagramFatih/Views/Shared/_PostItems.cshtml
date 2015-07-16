@@ -1,0 +1,91 @@
+﻿@using MVCInstagramFatih.Entity
+
+@model PhotoPost
+@*
+    class="fancybox-video fancybox.iframe" -- Videolar için
+
+    class="fancybox-link" -- fotoğraflar için
+*@
+@using MVCInstagramFatih.Entity
+@using BusinessLayer
+@{
+    User u = Session["Kullanici"] as User;
+    string BackgroundImage = string.Empty;
+    string ImageVideoClass = string.Empty;
+    string LikeClass = "btn-default";
+    string CommentClass = "btn-default";
+    string LikeButtonId = "LikeButton" + Model.PhotoPostId;
+    string LikeButtonCountId = "LikeButtonCount" + Model.PhotoPostId;
+    int IsLike = 0;
+    string CommentModalId = "#CommentModal" + Model.PhotoPostId;
+    LikeManagement LM = new LikeManagement();
+    CommentManagement CM = new CommentManagement();
+    if (LM.ExistLike(Model.PhotoPostId, u.UserId))
+    {
+        LikeClass = "btn-danger";
+        IsLike = 1;
+    }
+    if (CM.ExistComment(Model.PhotoPostId, u.UserId))
+    {
+        CommentClass = "btn-danger";
+    }
+    if (Model.IsPhoto)
+    {
+        BackgroundImage = Model.PhotoPath;
+        ImageVideoClass = "fancybox-link";
+    }
+    else
+    {
+        BackgroundImage = "~/img/video.png";
+        ImageVideoClass = "fancybox-video fancybox.iframe";
+    }
+}
+<div class="col-sm-12 article-wrap filter-popular filter-brands">
+    <article>
+        <div class="row">
+            <div class="col-sm-6 col-md-7 col-lg-8 left-side">
+                <figure>
+                    <ul class="slides">
+                        
+                        <li style="background-image: url('@Url.Content(BackgroundImage)');"></li>
+                    </ul>
+                    <div class="overlay hoverDir">
+                        <a href="@Url.Content(Model.PhotoPath)" class="@ImageVideoClass"><i class="fa fa-play-circle-o"></i></a>
+                        <div class="background"></div>
+                    </div>
+
+                </figure>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-4 right-side">
+                <div class="text">
+                    <h4><a href="@Url.Action("Profil", "Home", new { id =Model.UserId })">@Model.user.FirstName</a></h4>
+                    @foreach (PostHashtag item in Model.posthashtag)
+                    {
+                        @Html.Partial("_Hastags",item)
+                    }
+                    
+                    <p>
+                        @Model.PhotoDescription
+                    </p>
+
+                    <footer>
+                        <button type="button" class="btn @LikeClass btn-circle btn-lg" onclick="SetLike(@Model.PhotoPostId,@Model.UserId,@IsLike)" id="@LikeButtonId">
+                            <i class="glyphicon glyphicon-heart"></i>
+                           Beğeni <span class="badge" id="@LikeButtonCountId">@Model.photolikes.Count()</span>
+                        </button>
+                        
+                        <button type="button" class="btn @CommentClass btn-circle btn-lg" data-toggle="modal" data-target="@CommentModalId">
+                            <i class="glyphicon glyphicon-comment"> </i>
+                             Yorum <span class="badge">@Model.photocomments.Count()</span>
+                        </button>
+                        
+                    </footer>
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+@Html.Partial("_Comments",Model.photocomments)

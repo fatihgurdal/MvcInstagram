@@ -1,0 +1,79 @@
+﻿<script>
+    function SetLike(PhotoId, id, Islike) {
+       
+        $.PhotoId = PhotoId
+        $.KisiId = id
+        var LikeButtonId = "#LikeButton" + PhotoId;
+        var LikeButtonCountId = "#LikeButtonCount" + PhotoId;
+        
+        $.LikeModeModel = {
+            "PhotoId": $.PhotoId,
+            "KisiId": $.KisiId
+        };
+
+        $.ajax({
+            type: "POST",
+            url: '@(Url.Action("SetLike", "Home"))',
+            data: $.LikeModeModel,
+            dataType: "json",
+            success: function (data) {
+                if (data) {                    
+                    $(LikeButtonId).attr("class", "btn btn-danger btn-circle btn-lg");
+                    $(LikeButtonCountId).text(parseInt($(LikeButtonCountId).text()) + 1);
+                    
+
+                } else {                    
+                    $(LikeButtonId).attr("class", "btn btn-default btn-circle btn-lg");
+                    $(LikeButtonCountId).text(parseInt($(LikeButtonCountId).text()) - 1);
+                }
+               
+            }
+        });
+
+
+    }
+
+    function AddComment(PhotoId, Userid,CommentInputId) {
+        $.PhotoId = PhotoId;
+        $.UserId = Userid;
+        $.CommentStr = $("#" + CommentInputId).val();
+        $.CommentModelId = "#CommentWindow" + PhotoId;
+
+        $.CommentModeModel = {
+            "PhotoId": $.PhotoId,
+            "UserId": $.UserId,
+            "CommentStr": $.CommentStr
+        };
+
+        var urlx = '/Home/AddComment';
+
+        $.ajax({
+            type: "POST",
+            url: urlx,
+            data: $.CommentModeModel,
+            dataType: "text",
+            success: function (data) {
+                console.log(data);
+                $($.CommentModelId).append(data).children().last().hide().fadeIn();
+            }
+        });
+
+    }
+    function DeleteComment(CommentId) {
+
+        $.CommentId = CommentId;
+        $.HtmlCommentId = "#CommentModal" + CommentId;
+        $.DeleteCommentModel = {
+            "CommentId": $.CommentId
+        };
+        $.ajax({
+            type: "POST",
+            url: '@(Url.Action("DeleteComment", "Home"))',
+            data: $.DeleteCommentModel,
+            dataType: "json",
+            success: function (data) {
+                $($.HtmlCommentId).fadeOut("slow");
+            }
+        });
+    }
+</script>

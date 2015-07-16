@@ -1,0 +1,59 @@
+﻿@using MVCInstagramFatih.Entity
+@model MVCInstagramFatih.Entity.PhotoPost
+
+@{
+    ViewBag.Title = "Create";
+    User u = Session["Kullanici"] as User;
+}
+@section RS_Menu{
+    @Html.Partial("_Menu")
+}
+@section RS_ProfilBar{
+    @Html.Partial("_ProfilBar", u)
+}
+
+<section class="portfolio-wrap">
+    <div class="container">
+
+@using (Html.BeginForm("Create", "Profil", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">Fotoğraf & Video :</label>
+            <div class="col-md-10">
+                <input type="file" id="ImageUpload" name="ImageUpload" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Hastah</label>
+            <div class="col-md-10">
+                <input type="text" name="posthashtag" value="" placeholder="Aralarına virgül atarak giriniz" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Açıklama</label>
+            <div class="col-md-10">
+                <textarea name="PhotoDescription" rows="4" class="form-control"></textarea>
+            </div>
+        </div>       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success" >
+                    <i class="glyphicon glyphicon-share"> </i>
+                    Paylaş!
+                    </button>
+            </div>
+        </div>
+    </div>
+}
+
+</div>
+    </section>
+@section RS_Footer{
+    @Html.Partial("_footer")
+}
